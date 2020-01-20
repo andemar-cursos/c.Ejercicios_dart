@@ -12,6 +12,7 @@ mixin Logger2{
   }
 }
 
+// Hace with con 2 
 abstract class Astro with Logger{
 
   String nombre;
@@ -27,7 +28,8 @@ abstract class Astro with Logger{
   }
 }
 
-  class Asteroide extends Astro{
+  //Uso de varios mixin
+  class Asteroide extends Astro with Logger, Logger2{
 
     String nombre;
 
