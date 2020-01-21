@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:paquetes/ReqRes/ReqRes_pais.dart';
 
 import 'package:paquetes/clases/reqres_respuesta.dart';
 
@@ -24,4 +25,25 @@ void getReqRest_serivce(){
     
   });
 
+}
+
+void getReqRest_pais(){
+  final url = 'https://restcountries.eu/rest/v2/alpha/col';
+
+  http.get(url).then((value){
+
+    final respuestaPais = reqResPaisFromJson(value.body);
+    print('=======================');
+    print('Pais: ${respuestaPais.name}');
+    print('Poblacion: ${respuestaPais.population}');
+    print('Fronteras');
+    respuestaPais.borders.forEach((frontera) => print('${frontera.toUpperCase()}'));
+    respuestaPais.languages.forEach((lenguaje) => print('Lenguages: ${lenguaje.name}'));
+    print('Latitud: ${respuestaPais.latlng[0]}');
+    print('Longitud: ${respuestaPais.latlng[1]}');
+    print('Moneda: ${respuestaPais.currencies[0].name}');
+    print('Bandera: ${respuestaPais.flag}');
+    print('=======================');
+
+  });
 }
